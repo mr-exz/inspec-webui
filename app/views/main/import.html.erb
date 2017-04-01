@@ -1,0 +1,93 @@
+<html>
+<head>
+  <title>inspec_webui</title>
+</head>
+<body>
+<div class="center jumbotron">
+  <h4>Inspec Report</h4>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="alert alert-info" role="alert">
+        Total servers:
+        <span class="badge">
+          <%= @total_server_success + @total_server_error %>
+        </span>
+      </div>
+
+      <div class="alert alert-success" role="alert">
+        Server without errors:
+        <span class="badge">
+          <%= @total_server_success %>
+        </span>
+      </div>
+
+      <div class="alert alert-danger" role="alert">
+        Server with errors:
+        <span class="badge">
+          <%= @total_server_error %>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="alert alert-info" role="alert">
+        Total tests:
+        <span class="badge">
+          <%= @total_service_success + @total_service_fail %>
+        </span>
+      </div>
+
+      <div class="alert alert-success" role="alert">
+        Success tests:
+        <span class="badge">
+          <%= @total_service_success %>
+        </span>
+      </div>
+
+      <div class="alert alert-danger" role="alert">
+        Error tests:
+        <span class="badge">
+          <%= @total_service_fail %>
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+  <table class="table sortable">
+    <tr>
+      <th class="warn">Server</th>
+      <th class="warn">Service</th>
+      <th class="warn">Status</th>
+    </tr>
+    <% @rowarraydisp.each do |reports| %>
+          <% reports['controls'].each do |report| %>
+              <tr>
+                <td class="info"> <%= reports['server_name'] %> </td>
+                <% if report['status'] == 'failed' %>
+                  <td class="danger"><%= report['id'] %></td>
+                <% else %>
+                  <td><%= report['id'] %></td>
+                <% end %>
+                <% if report['status'] == 'failed' %>
+                    <td class="danger" onclick="alert('<%= report['id'] %>')" >
+                      <%= report['status'] %>
+                    </td>
+                <% else %>
+                    <td class="success" onclick="alert('<%= report['id'] %>')" >
+                      <%= report['status'] %>
+                    </td>
+                <% end %>
+              </tr>
+          <% end %>
+    <% end %>
+  </table>
+</div>
+</body>
+</html>
+
+
+
+

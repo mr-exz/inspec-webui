@@ -19,12 +19,7 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-.idea/.generators
-.idea/.rakeTasks
-.idea/inspec_webui.iml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/runConfigurations/Development__inspec_webui.xml
-.idea/runConfigurations/Production__inspec_webui.xml
-.idea/runConfigurations/spec__inspec_webui.xml
-.idea/runConfigurations/test__inspec_webui.xml
+.idea/*
+.vagrant
+/vagrant/vagrant
+/vagrant/vagrant.pub
