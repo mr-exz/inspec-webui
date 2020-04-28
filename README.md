@@ -21,12 +21,6 @@ Inspec WebUI it is Rails app for show result from Inspec
 # cd inspec-webui
 ```
 
-### Create your own ssh key.
-
-```
-# ssh-keygen -f ./vagrant/vagrant
-```
-
 ### Create VM
 
 ```

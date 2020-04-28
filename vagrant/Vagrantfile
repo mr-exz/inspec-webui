@@ -1,23 +1,28 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-require './config'
+APP_NAME=File.basename(File.expand_path("..", Dir.pwd))
+APP_HOME=File.join(File.dirname(__FILE__), '../')
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "centos/7"
-  config.ssh.insert_key = false
-  config.ssh.private_key_path = ["./vagrant","~/.vagrant.d/insecure_private_key"]
-  config.vm.provision "file", source: "./vagrant.pub", destination: "~/.ssh/authorized_keys"
-  config.vm.network "private_network", type: "dhcp"
-  
+
   config.vm.provision "shell" do |s|
     s.path = "./prepare.sh"
   end
 
-  config.vm.provider "virtualbox" do |vb|
-    vb.cpus = 2
-    vb.memory = "1024"
-    vb.name = "#{APP_NAME}"
+  config.vm.define "vm" do |vm|
+    vm.vm.hostname = "#{APP_NAME}"
+    vm.vm.box = "centos/7"
+    vm.ssh.insert_key = false
+    vm.vm.network "private_network", type: "dhcp"
+    vm.vm.synced_folder APP_HOME, "/opt/#{APP_NAME}"
+
+    vm.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--audio", "none"]
+      vb.cpus = 1
+      vb.memory = "512"
+      vb.name = "#{APP_NAME}"
+    end
+
   end
 
-  config.vm.synced_folder APP_HOME, "/opt/#{APP_NAME}"
 end
