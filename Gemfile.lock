@@ -165,7 +165,7 @@ GEM
       turbolinks
     json (2.3.0)
     jwt (2.2.1)
-    libv8 (3.16.14.19)
+    libv8 (7.3.492.27.1)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -188,6 +188,8 @@ GEM
     mimemagic (0.3.4)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
+    mini_racer (0.2.10)
+      libv8 (> 7.3)
     minitest (5.14.0)
     mixlib-log (3.0.8)
     mixlib-shellout (3.0.9)
@@ -253,7 +255,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    ref (2.0.0)
     representable (3.0.4)
       declarative (< 0.1.0)
       declarative-option (< 0.2.0)
@@ -318,9 +319,6 @@ GEM
     sync (0.5.0)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
-    therubyracer (0.12.3)
-      libv8 (~> 3.16.14.15)
-      ref
     thor (0.20.3)
     thread (0.2.2)
     thread_safe (0.3.6)
@@ -415,6 +413,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   listen (~> 3.0.5)
+  mini_racer
   puma (~> 3.0)
   rails (~> 5.2.4.2)
   rake (>= 12.3.3)
@@ -422,7 +421,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
-  therubyracer
   thread
   turbolinks (~> 5)
   tzinfo-data

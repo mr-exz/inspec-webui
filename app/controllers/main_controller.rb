@@ -15,7 +15,7 @@ class MainController < ApplicationController
 
     csv.each do |row|
       test_unit = {
-          "command" => "inspec exec #{inspec_file.path} -t #{row[0]} --password \"#{row[1]}\" --format json-min",
+          "command" => "inspec exec #{inspec_file.path} -t #{row[0]} --password \"#{row[1]}\" --reporter json-min",
           "server_name" => row[0]
       }
       queue.push(test_unit)
@@ -35,6 +35,7 @@ class MainController < ApplicationController
             inspec_reports_json = `#{work_unit["command"]}`
 
             reports = JSON.parse(inspec_reports_json)
+
             reports['server_name'] = work_unit["server_name"]
 
             reports['controls'].each do |report|
