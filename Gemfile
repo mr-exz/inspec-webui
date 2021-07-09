@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # For inspec_webui
 gem 'thread'
-gem 'inspec'
+gem 'inspec', '>= 3.9.3'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'autoprefixer-rails'
 gem 'jquery-turbolinks'
